@@ -1,0 +1,38 @@
+{% extends "bloodbank/base.html" %}
+{% block content %}
+<div class="detail-card">
+    <h2>Blood Donor Search Results</h2>
+    <p>Searching for <strong>{{ blood_group|default:"Any Blood Group" }}</strong> in <strong>{{ search_location|default:"any location" }}</strong>.</p>
+
+    {% if donors %}
+        <p class="result-summary">Found {{ donors|length }} donor{{ donors|length|pluralize }}.</p>
+        <div class="table-wrapper">
+            <table class="result-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Blood Group</th>
+                        <th>Location</th>
+                        <th>Contact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for donor in donors %}
+                    <tr>
+                        <td>{{ donor.name }}</td>
+                        <td>{{ donor.blood_group }}</td>
+                        <td>{{ donor.city }}, {{ donor.state }}, {{ donor.country }}</td>
+                        <td>{{ donor.contact_number }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="empty-state">Sorry, no donors were found matching your criteria.</p>
+    {% endif %}
+
+    <a href="{% url 'home' %}" class="btn-secondary">← New Search</a>
+</div>
+{% endblock content %}
+

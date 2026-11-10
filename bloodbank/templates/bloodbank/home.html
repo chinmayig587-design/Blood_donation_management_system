@@ -1,0 +1,197 @@
+{% extends "bloodbank/base.html" %}
+{% block content %}
+<div class="hero-card">
+    <div class="hero-copy">
+        <span class="hero-tag">Safe. Fast. Responsible.</span>
+        <h2>Connect donors with patients in need.</h2>
+        <p>Search local blood donors quickly, learn eligibility details, and join our lifesaving community.</p>
+    </div>
+    <div class="hero-actions">
+        <a href="{% url 'register' %}" class="btn-primary">Register as Donor</a>
+        <a href="#search" class="btn-secondary">Search for Donors</a>
+    </div>
+</div>
+
+<div class="search-card" id="search">
+    <h2>Find Blood Donors</h2>
+    <form method="GET" action="{% url 'search_results' %}" class="form-card">
+        <div class="search-field">
+            <label for="blood_group">Blood Group</label>
+            <input type="text" id="blood_group" name="blood_group" placeholder="e.g., O+" required>
+        </div>
+        <div class="search-field">
+            <label for="country">Country</label>
+            <input type="text" id="country" name="country" placeholder="e.g., India">
+        </div>
+        <div class="search-field">
+            <label for="state">State</label>
+            <input type="text" id="state" name="state" placeholder="e.g., Karnataka">
+        </div>
+        <div class="search-field">
+            <label for="district">District</label>
+            <input type="text" id="district" name="district" placeholder="e.g., Tumkur">
+        </div>
+        <div class="search-field">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" placeholder="e.g., Koratagere">
+        </div>
+        <div class="search-field search-action">
+            <button type="submit" class="btn-primary">Search</button>
+        </div>
+    </form>
+</div>
+
+<div class="register-link">
+    <h3>Wish to donate blood?</h3>
+    <a href="{% url 'register' %}" class="btn-secondary">Register voluntary blood donor</a>
+</div>
+
+<div class="content-section">
+    <div class="info-grid">
+        <section class="info-card">
+            <h3>Why Donate Blood?</h3>
+            <ul>
+                <li>One donation can save up to <strong>three lives</strong>.</li>
+                <li>Hospitals and emergency cases always need blood.</li>
+                <li>It promotes compassion and community well-being.</li>
+                <li>Giving blood is a powerful way to help others.</li>
+            </ul>
+        </section>
+        <section class="info-card">
+            <h3>Eligibility Criteria</h3>
+            <ul>
+                <li>Age between 18 and 65 years.</li>
+                <li>Minimum weight of 50 kg.</li>
+                <li>Hemoglobin level at least 12.5 g/dL.</li>
+                <li>No major illness or active infection at the time of donation.</li>
+            </ul>
+        </section>
+    </div>
+
+    <section class="table-card">
+        <h3>About Blood Groups</h3>
+        <p>Understanding compatibility helps keep transfusions safe and effective.</p>
+        <div class="table-wrapper">
+            <table class="content-table">
+                <caption>Blood Group Compatibility</caption>
+                <thead>
+                    <tr>
+                        <th>Blood Group</th>
+                        <th>Can Donate To</th>
+                        <th>Can Receive From</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>O-</td>
+                        <td>All blood groups</td>
+                        <td>O-</td>
+                    </tr>
+                    <tr>
+                        <td>O+</td>
+                        <td>O+, A+, B+, AB+</td>
+                        <td>O+, O-</td>
+                    </tr>
+                    <tr>
+                        <td>A-</td>
+                        <td>A-, A+, AB-, AB+</td>
+                        <td>A-, O-</td>
+                    </tr>
+                    <tr>
+                        <td>A+</td>
+                        <td>A+, AB+</td>
+                        <td>A+, A-, O+, O-</td>
+                    </tr>
+                    <tr>
+                        <td>B-</td>
+                        <td>B-, B+, AB-, AB+</td>
+                        <td>B-, O-</td>
+                    </tr>
+                    <tr>
+                        <td>B+</td>
+                        <td>B+, AB+</td>
+                        <td>B+, B-, O+, O-</td>
+                    </tr>
+                    <tr>
+                        <td>AB-</td>
+                        <td>AB-, AB+</td>
+                        <td>A-, B-, AB-, O-</td>
+                    </tr>
+                    <tr>
+                        <td>AB+</td>
+                        <td>AB+ only</td>
+                        <td>All blood groups</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="content-table">
+                <caption>Blood Group Notes</caption>
+                <thead>
+                    <tr>
+                        <th>Blood Group</th>
+                        <th>Common Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>O-</td>
+                        <td>Universal donor; very valuable in emergencies.</td>
+                    </tr>
+                    <tr>
+                        <td>O+</td>
+                        <td>Most common group; good for positive recipients.</td>
+                    </tr>
+                    <tr>
+                        <td>A-</td>
+                        <td>Important for A and AB recipients; less common.</td>
+                    </tr>
+                    <tr>
+                        <td>A+</td>
+                        <td>Common and widely accepted by A+ and AB+ patients.</td>
+                    </tr>
+                    <tr>
+                        <td>B-</td>
+                        <td>Needed by B and AB positive/negative recipients.</td>
+                    </tr>
+                    <tr>
+                        <td>B+</td>
+                        <td>Relatively common; good for B+ and AB+ transfusions.</td>
+                    </tr>
+                    <tr>
+                        <td>AB-</td>
+                        <td>Rare donor type; especially important for AB recipients.</td>
+                    </tr>
+                    <tr>
+                        <td>AB+</td>
+                        <td>Universal recipient; can receive from any group.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <div class="info-grid">
+        <section class="info-card">
+            <h3>Precautions Before Donation</h3>
+            <ul>
+                <li>Eat a light, healthy meal before donating.</li>
+                <li>Drink enough water or fluids before donation.</li>
+                <li>Avoid donating on an empty stomach.</li>
+                <li>Inform staff about recent travel or medications.</li>
+            </ul>
+        </section>
+        <section class="info-card">
+            <h3>After Care Instructions</h3>
+            <ul>
+                <li>Drink plenty of water after donation.</li>
+                <li>Keep the bandage on for a few hours.</li>
+                <li>Avoid heavy lifting for 24 hours.</li>
+                <li>If dizzy, sit or lie down until you feel better.</li>
+            </ul>
+        </section>
+    </div>
+</div>
+{% endblock content %}
